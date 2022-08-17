@@ -1,0 +1,11 @@
+The Indian Companies that have large database size and large number of transactions are:
+1. CRED
+2. Groww
+3. JIO Payments
+4. MakeMyTrip
+5. Paytm
+6. Flipkart
+7. Zomato
+8. Tata Consultancy Services
+9. Wipro
+10. Infosys

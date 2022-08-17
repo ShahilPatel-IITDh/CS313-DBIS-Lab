@@ -1,0 +1,6 @@
+A data model is an abstract model used to organise data items and standardise their relationships with one another and with attributes of physical objects. There are two distinct but related notions that might be referred to as data models. It can also refer to an abstract formalisation of the entities and connections present in a certain application domain, such as the clients, goods, and orders in a manufacturing company. Particularly in relation to programming languages, a data structure can also be used to refer to a data model. Particularly in the context of enterprise models, function models are frequently used in conjunction with data models. By providing the description and structure of data, data models serve as a major tool to support the creation of information systems. 
+Data models can be of 3 types:
+
+1. Conceptual Data Model
+2. Logical Data Model
+3. Physical Data Model
