@@ -1,0 +1,176 @@
+\documentclass[14pt]{extarticle}
+\usepackage[utf8]{inputenc}
+\usepackage[margin = 0.6in]{geometry}
+\usepackage{xcolor}
+\usepackage{lipsum}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{tabularx}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{adjustbox}
+\usepackage{csquotes}
+
+\title{CS-313 - Assignment 3}
+\author{
+\color{blue}{Monu Kumar Soyal - 200010029}
+}
+\date{\today}
+\begin{document}
+\maketitle
+\hline
+
+\section*{Answer 1}
+\textbf{\textit{create user lab3@localhost identified by `Password*123';\\
+grant all privileges on lab3.* to lab3@localhost;\\
+mysql -u lab3 -p\\
+Password*123\\
+create database lab3;\\
+use lab3;
+}}
+
+\begin{center}
+    \includegraphics[scale = 1.2]{1.png}
+    \includegraphics[scale = 1]{2.png}
+    \includegraphics[scale = 1]{1-3.png}
+\end{center}
+
+\section*{Answer 2}
+\textbf{\textit{-\ -\ creating the part table \\
+create table part (\\
+    part\textunderscore no  int,\\
+    part\textunderscore name varchar(30),\\
+    color varchar(50),\\
+    weight float,\\
+    primary key(part\textunderscore no)\\
+    );\\
+\\
+-\ -\ creating the supplier table\\
+\\
+create table supplier(\\
+    supplier\textunderscore no int,\\
+    sup\textunderscore name    varchar(30),\\
+    city varchar(50),\\
+    bank varchar(20),\\
+    primary key(supplier\textunderscore no)\\
+    );
+\\
+\\
+-\ -\ creating the shipment table\\
+\\
+create table shipment(\\
+    shipment\textunderscore no int,\\
+    part\textunderscore no int,\\
+    supplier\textunderscore no int,\\
+    date varchar(20),\\
+    quantity  int,\\
+    price float,\\
+    primary key(shipment\textunderscore no),\\
+    foreign key(part\textunderscore no) references part(part\textunderscore no),\\
+    foreign key(supplier\textunderscore no) references\\ supplier(supplier\textunderscore no)\\
+);}}\\
+
+\begin{center}
+    \includegraphics[scale = 0.8]{2-1.png}\\
+\end{center}
+\begin{center}
+    \includegraphics[scale = 0.7]{2-2.png}\\
+\end{center}
+\begin{center}
+    \includegraphics[scale = 1]{2-3.png}
+\end{center}
+
+\section*{Answer 3}
+\textbf{\textit{
+-\ -\ For part table \\
+insert into part \\
+values(1, ``partname1", ``red", 100); \\
+\\
+-\ -\ For supplier table \\
+\\
+insert into supplier\\
+values(01, ``supplier\textunderscore 1", ``Mumbai", ``BOB"); \\
+\\
+-\ -\ For shipment table \\
+\\
+insert into shipment \\
+values(1, 1, 1, ``2/9/2022", 10, 100000.0);\\
+}}\\
+
+\begin{center}
+    \includegraphics[scale = 1]{3-1.png}
+\end{center}
+\begin{center}
+    \includegraphics[scale = 1]{3-2.png}
+\end{center}
+\begin{center}
+    \includegraphics[scale = 1]{3-3.png}
+\end{center}
+
+\newpage
+\section*{Answer 4}
+\subsubsection*{Content of .sql file -\ -\ $>$}
+\textbf{\textit{insert into part values (2, ``Part\textunderscore 2", ``red", 400); \\
+insert into part values (3, ``Part\textunderscore 3", ``Green", 500); \\
+insert into part values (4, ``Part\textunderscore 4", ``Blue", 600); \\
+insert into supplier values (2, ``Supplier\textunderscore 2", ``Mumbai", ``SBI"); \\
+insert into supplier values (3, ``Supplier\textunderscore 3", ``Chennai", ``HDFC"); \\
+insert into shipment values (2, 4, 2, ``3/7/2022", 5, 270000.0); \\
+insert into shipment values (3, 2, 1, ``4/5/2022", 6, 325000.0); \\
+insert into shipment values (4, 1, 3, ``20/9/2021", 15, 401000.0); \\
+insert into shipment values (5, 3, 1, ``22/8/2022", 8, 575000.0); \\
+insert into shipment values (6, 4, 2, ``12/2/2022", 9, 600000.0); \\
+insert into shipment values (7, 1, 1, ``15/7/2022", 1, 70000.0); \\
+insert into shipment values (8, 1, 2, ``1/5/2022", 2, 85000.0); \\
+insert into shipment values (9, 2, 3, ``25/3/2022", 3, 125000.0); \\
+insert into shipment values (10, 2, 2, ``29/5/2022", 4, 235000.0 \\
+insert into shipment values (11, 4, 3, ``31/3/2022", 5, 433000.0); \\
+insert into shipment values (12, 3, 2, ``13/6/2022", 6, 365000.0); \\
+insert into shipment values (13, 2, 1, ``23/8/2022", 3, 365000.0);\\
+insert into shipment values (14, 3, 2, ``11/2/2022", 7, 365000.0);\\
+insert into shipment values (15, 3, 3, ``4/7/2022", 2, 365000.0);\\
+insert into shipment values (16, 4, 3, ``17/3/2022", 1, 365000.0);\\
+}}
+
+\begin{center}
+    \includegraphics[height = 100mm, scale = 0.8]{4-1.png}
+\end{center}
+
+\newpage
+\section*{Answer 5}
+\textbf{\textit{
+-\ -\ $>$ (a). \\
+select * from part natural join supplier natural join shipment \\
+where color = ``red";\\
+\\
+-\ -\  $>$ (b).\\
+select sum(shipment.price), supplier.supplier\textunderscore no \\ from part, supplier, shipment \\
+where shipment.supplier\textunderscore no = supplier.supplier\textunderscore no \\
+and part.part\textunderscore no = shipment.part\textunderscore no \\ group by supplier.supplier\textunderscore no order by supplier.supplier\textunderscore no;\\
+\\
+-\ -\  $>$ (c).\\
+select supplier.supplier\textunderscore no, sup\textunderscore name\\
+from part, supplier, shipment \\
+where shipment.supplier\textunderscore no = supplier.supplier\textunderscore no \\
+and part.part\textunderscore no = shipment.part\textunderscore no \\
+group by supplier.supplier\textunderscore no \\
+having count(distinct part.part\textunderscore no) = (select count(distinct part\textunderscore no) from part);
+}}
+
+\begin{flushleft}
+    \includegraphics[width = 200mm ,scale = 1]{5-1.png}
+\end{flushleft}
+\begin{flushleft}
+    \includegraphics[width = 200mm, scale = 1]{5-2.png}
+\end{flushleft}
+\begin{flushleft}
+    \includegraphics[width = 200mm, scale = 1]{5-3.png}
+\end{flushleft}
+
+
+
+
+\end{document}
