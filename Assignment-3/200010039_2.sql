@@ -1,0 +1,30 @@
+INSERT INTO part VALUES(2, 'tail', 'blue', 20);
+INSERT INTO part VALUES(3, 'tail', 'red', 40);
+INSERT INTO part VALUES(4, 'tube', 'orange', 50);
+INSERT INTO part VALUES(5, 'wing', 'red', 60);
+INSERT INTO part VALUES(6, 'head', 'red', 30);
+INSERT INTO part VALUES(7, 'lights', 'yellow', 40);
+
+INSERT INTO supplier VALUES(2, 'Shivam T', 'Mumbai', 'ICICI');
+INSERT INTO supplier VALUES(3, 'Prarthan', 'Manglore', 'Canara');
+INSERT INTO supplier VALUES(4, 'Shivam K', 'Patna', 'SBI');
+INSERT INTO supplier VALUES(5, 'Virat', 'Delhi', 'BOB');
+INSERT INTO supplier VALUES(6, 'Hardik', 'Vadodara', 'SBI');
+
+INSERT INTO shipment VALUES(2, 1, 1, '07-06-2022', 20, 100);
+INSERT INTO shipment VALUES(3, 2, 1, '07-06-2022', 30, 200);
+INSERT INTO shipment VALUES(4, 3, 1, '03-06-2022', 40, 150);
+INSERT INTO shipment VALUES(5, 4, 1, '01-01-2022', 30, 250);
+INSERT INTO shipment VALUES(6, 5, 1, '02-06-2022', 40, 150);
+INSERT INTO shipment VALUES(7, 7, 1, '04-07-2022', 50, 250);
+INSERT INTO shipment VALUES(8, 1, 2, '05-06-2021', 60, 350);
+INSERT INTO shipment VALUES(9, 2, 2, '05-06-2021', 70, 500);
+INSERT INTO shipment VALUES(10, 4, 2, '06-07-2022', 50, 200);
+INSERT INTO shipment VALUES(11, 5, 3, '05-07-2022', 60, 300);
+INSERT INTO shipment VALUES(12, 6, 3, '05-02-2021', 30, 100);
+INSERT INTO shipment VALUES(13, 6, 4, '05-03-2022', 30, 100);
+INSERT INTO shipment VALUES(14, 7, 5, '05-03-2022', 30, 100);
+INSERT INTO shipment VALUES(15, 7, 6, '03-05-2022', 40, 200);
+INSERT INTO shipment VALUES(16, 5, 5, '04-01-2021', 50, 500);
+INSERT INTO shipment VALUES(17, 4, 4, '03-06-2020', 30, 400);
+INSERT INTO shipment VALUES(18, 3, 6, '03-06-2020', 15, 200);
