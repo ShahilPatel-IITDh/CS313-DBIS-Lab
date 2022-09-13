@@ -18,15 +18,22 @@ INSERT INTO prereq(course_id, prereq_id) VALUES ('CS-333','CS-303');
 
 -- 8} iii.
 
-UPDATE instructor
-SET salary = salary*1.1
-WHERE instructor.dept_name IN (SELECT dept_name FROM department WHERE department.budget >900000);
+WITH updated_salaries (Name, Updated_Salary) AS
+(SELECT inst.name, inst.salary as New_Salary FROM instructor as inst,department
+WHERE inst.dept_name = department.dept_name AND department.budget > 90000)
+-- Updating Instructor Table as per requirements
+UPDATE instructor SET salary = salary * 1.1 WHERE instructor.name IN (SELECT Name FROM updated_salaries);
+SELECT instructor.ID,instructor.name,instructor.dept_name,instructor.salary FROM instructor,department 
+WHERE instructor.dept_name = department.dept_name AND department.budget > 90000;
 
 -- 8} iv.
 
-SELECT course.course_id, course.title,COUNT(takes.ID) 
-FROM takes, course 
-where takes.course_id = course.course_id and takes.year =2007 and takes.semester ="Fall" 
-GROUP BY course.course_id 
-HAVING COUNT(takes.ID)>15
-ORDER BY course.course_id ASC;
+WITH selected_courses(Course_ID,Title,num_students) AS 
+(SELECT course.course_id,course.title,count(student.ID) FROM course,student,section,takes 
+WHERE course.course_id = section.course_id AND section.semester = 'Fall' 
+AND section.year = '2007' AND section.sec_id = takes.sec_id 
+AND student.ID = takes.ID AND takes.course_id = course.course_id
+GROUP BY course.course_id)
+-- Displaying all such courses which have 15+ students undertaking it in the year 2007
+SELECT Course_ID,Title,num_students FROM selected_courses WHERE num_students > 15
+ORDER BY Course_ID ASC;
