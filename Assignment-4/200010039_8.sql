@@ -28,12 +28,9 @@ WHERE instructor.dept_name = department.dept_name AND department.budget > 90000;
 
 -- 8} iv.
 
-WITH selected_courses(Course_ID,Title,num_students) AS 
-(SELECT course.course_id,course.title,count(student.ID) FROM course,student,section,takes 
-WHERE course.course_id = section.course_id AND section.semester = 'Fall' 
-AND section.year = '2007' AND section.sec_id = takes.sec_id 
-AND student.ID = takes.ID AND takes.course_id = course.course_id
-GROUP BY course.course_id)
--- Displaying all such courses which have 15+ students undertaking it in the year 2007
-SELECT Course_ID,Title,num_students FROM selected_courses WHERE num_students > 15
-ORDER BY Course_ID ASC;
+SELECT c.course_id, c.title, COUNT(takes.ID) 
+FROM takes AS t, course AS c
+WHERE t.course_id = c.course_id AND t.year = 2007 AND t.semester ="Fall" AND c.dept_name = "Comp. Sci."
+GROUP BY c.course_id 
+HAVING COUNT(t.ID)>15
+ORDER BY c.course_id ASC;
