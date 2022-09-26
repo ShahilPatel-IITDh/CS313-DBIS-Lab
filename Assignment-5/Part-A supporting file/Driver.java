@@ -6,7 +6,7 @@ public class Driver {
 	public static void main(String[] args) {
 		try {
 			//Get connection
-			Connection myConn=DriverManager.getConnection("jdbc:mysql://localhost:3306/university","root","password");
+			Connection myConn=DriverManager.getConnection("jdbc:mysql://localhost:3306/university","universityDB0039","Password");
 			Statement myS=myConn.createStatement();
 			//Query
 			ResultSet resultSet = myS.executeQuery("SELECT * FROM student");			//Display
