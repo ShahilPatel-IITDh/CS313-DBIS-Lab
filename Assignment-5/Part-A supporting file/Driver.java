@@ -1,6 +1,7 @@
 package jdbc_demo;
 
 import java.sql.*;
+
 import java.util.Scanner;
 
 public class Driver {
@@ -13,9 +14,10 @@ public class Driver {
 		 		+ "SELECT Department, Student_Count, Instructor_Count "
 		 		+ "FROM student_dept NATURAL JOIN (SELECT dept_name AS Department, count(ID) AS Instructor_Count FROM instructor GROUP BY dept_name) AS instructor_dept "
 		 		+ "ORDER BY Department asc");
+	  System.out.println("");
 	  System.out.println("Department"+" "+"Students"+" "+"Instructors");		 
 	  while(rs.next()){
-		  System.out.println(rs.getString("Department")+ "  "+rs.getString("Student_Count") +"  "+rs.getString("Instructor_Count"));
+		  System.out.println(rs.getString("Department")+ "        "+rs.getString("Student_Count") +"      "+rs.getString("Instructor_Count"));
 	  	}
 	  }catch(Exception e){
 		  e.printStackTrace();
@@ -26,10 +28,13 @@ public class Driver {
 	{
 		try (Scanner sc = new Scanner(System.in))
 		{
+
+            System.out.println("");
 			System.out.println("Enter building name:");
-            String build = sc.nextLine();
-            statement_3.setString(1, build);
+            String prepare = sc.nextLine();
+            statement_3.setString(1, prepare);
             ResultSet resultSet = statement_3.executeQuery();
+            
             System.out.print("room_number: ");
             while(resultSet.next()){
 				System.out.print(resultSet.getString("room_number"));
@@ -67,5 +72,7 @@ public class Driver {
 			e.printStackTrace();
 		}
 	}
-		
+	
+	
+	
 }
