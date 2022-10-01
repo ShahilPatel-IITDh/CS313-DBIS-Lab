@@ -26,14 +26,15 @@ public class StudentServlet extends HttpServlet{
 		Connection conn = null;
 		Statement  stmt = null;
 		String student_name=null;
+		String dept_name=null;
 		try {
 			out.println("<!DOCTYPE html>");//print in the form of HTML code
 			out.println("<html>");
-			out.println("<head><title>Student Qurey Servlet</title></head>");
+			out.println("<head><title>Advisor Query Servlet</title></head>");
 			out.println("<body>");
-			Class.forName("org.mysql.Driver"); //loading mysql driver
-			String query="select * from student where id=?"; //query to get the student details with id 
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/university","root","12345678");//mysql connection with username and password
+			Class.forName("com.mysql.jdbc.Driver"); //loading mysql driver
+			String query="select * from student where id=?	"; //query to get the student details with id 
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/university", "pavan", "12345678");//mysql connection with username and password
 			PreparedStatement ps = conn.prepareStatement(query);
 			ps.setString(1, student_id);
 			ResultSet rset = ps.executeQuery();
@@ -45,6 +46,7 @@ public class StudentServlet extends HttpServlet{
 			out.println("Student id is " +student_id+" Student name is "+student_name);//printing student id and name
 			out.println("<p>==== " + count + " rows found =====</p>");
 			out.println("</body></html>");
+			
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		} catch (ClassNotFoundException e) {
@@ -60,4 +62,3 @@ public class StudentServlet extends HttpServlet{
 		}
 	}
 }
-
