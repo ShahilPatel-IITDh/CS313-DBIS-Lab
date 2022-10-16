@@ -35,9 +35,9 @@ public class IssueServlet extends HttpServlet {
 
 
 		Connection con = null;
- 		String url = "jdbc:mysql://localhost:3306/Library"; //MySQL URL and followed by the database name
- 		String username = "universityDB0041"; //MySQL username
- 		String password = "Pass@123"; //MySQL password
+ 		String url = "jdbc:mysql://localhost:3306/library"; //MySQL URL and followed by the database name
+ 		String username = "library-1"; //MySQL username
+ 		String password = "Password"; //MySQL password
 		
 		Class.forName("com.mysql.jdbc.Driver");
 		con = DriverManager.getConnection(url, username, password); //attempting to connect to MySQL database

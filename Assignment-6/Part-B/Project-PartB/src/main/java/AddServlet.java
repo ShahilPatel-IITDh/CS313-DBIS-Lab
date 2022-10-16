@@ -9,18 +9,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
 /**
  * Servlet implementation class StudentServlet
  */
-@WebServlet("/IssueServlet")
-public class IssueServlet extends HttpServlet {
+@WebServlet("/AddServlet")
+public class AddServlet extends HttpServlet {
 	private static final long serialVersionid = 1L;
    
-    public IssueServlet() {
+    public AddServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,32 +28,34 @@ public class IssueServlet extends HttpServlet {
 		{
 	
 		//getting input values from jsp page
-		String student_id = request.getParameter("student_id");
 		String book_id = request.getParameter("book_id");
-		String issue_date = request.getParameter("issue_date");
+		String title = request.getParameter("title");
+		String category = request.getParameter("category");
+		String author = request.getParameter("author");
 
 
 		Connection con = null;
- 		String url = "jdbc:mysql://localhost:3306/Library"; //MySQL URL and followed by the database name
- 		String username = "universityDB0041"; //MySQL username
- 		String password = "Pass@123"; //MySQL password
+ 		String url = "jdbc:mysql://localhost:3306/library"; //MySQL URL and followed by the database name
+ 		String username = "library-1"; //MySQL username
+ 		String password = "Password"; //MySQL password
 		
 		Class.forName("com.mysql.jdbc.Driver");
 		con = DriverManager.getConnection(url, username, password); //attempting to connect to MySQL database
  		System.out.println("Printing connection object "+con);
 
 		//Prepared Statement to add student data
-		PreparedStatement st = con.prepareStatement("insert into issue values(?,?,?)");
-		st.setString(1,student_id);
-		st.setString(2,book_id);
-		st.setString(3,issue_date);
+		PreparedStatement st = con.prepareStatement("insert into book values(?, ?,?,?)");
+ 		st.setString(1,book_id);
+		st.setString(2,title);
+		st.setString(3,category);
+		st.setString(4,author);
 		int result=st.executeUpdate();
 
 		//Checks if insert is successful.If yes,then redirects to Result.jsp page 
 		if(result>0)
 		{
 			
-			RequestDispatcher rd = request.getRequestDispatcher("IssueResult.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("AddResult.jsp");
 			rd.forward(request, response);
 		}
 
