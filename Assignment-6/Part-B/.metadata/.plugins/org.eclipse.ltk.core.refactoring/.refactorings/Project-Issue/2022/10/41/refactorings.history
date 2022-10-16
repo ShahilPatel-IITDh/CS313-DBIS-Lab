@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename resource &apos;Project-Issue/src/main/java/IsssueServlet.java&apos; to &apos;IssueServlet.java&apos;" description="Rename resource &apos;IsssueServlet.java&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/java/IsssueServlet.java" name="IssueServlet.java" stamp="1665936977721" updateReferences="true"/>
-</session>
