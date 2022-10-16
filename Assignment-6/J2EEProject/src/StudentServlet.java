@@ -36,10 +36,10 @@ public class StudentServlet extends HttpServlet {
 
 		Connection con = null;
  		String url = "jdbc:mysql://localhost:3306/university"; //MySQL URL and followed by the database name
- 		String username = "root"; //MySQL username
- 		String password = "123456"; //MySQL password
+ 		String username = "universityDB0039"; //MySQL username
+ 		String password = "Password"; //MySQL password
 		
-		Class.forName("org.mysql.Driver");
+		Class.forName("com.mysql.jdbc.Driver");
 		con = DriverManager.getConnection(url, username, password); //attempting to connect to MySQL database
  		System.out.println("Printing connection object "+con);
 
